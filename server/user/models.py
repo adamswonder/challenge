@@ -43,13 +43,14 @@ class User(AbstractBaseUser):
     email = models.EmailField(null=False, blank=False, unique=True)
     first_name = models.CharField(max_length=50, blank=False, null=False, default='Default first name')
     last_name = models.CharField(max_length=50, blank=False, null=False, default='Default last name')
+    ethereum_wallet_address = models.CharField(max_length=42, blank=True, null=True, unique=True)
     is_admin = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
+    
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
